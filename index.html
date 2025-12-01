@@ -336,14 +336,14 @@
                             <a href="https://twitter.com/utkarsh_dimri" class="social-link" aria-label="Follow Utkarsh Dimri on Twitter" target="_blank" rel="noopener">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="mailto:utkarsh.dimri@email.com" class="social-link" aria-label="Email Utkarsh Dimri">
+                            <a href="mailto:dimriutkarsh55@gmail.com" class="social-link" aria-label="Email Utkarsh Dimri">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </div>
                     </div>
                     
                     <div class="contact-form-container">
-                        <form class="contact-form" onsubmit="handleContactForm(event)" role="form">
+                        <form id="contact-form" class="contact-form" role="form">
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required aria-required="true">
@@ -399,7 +399,9 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
