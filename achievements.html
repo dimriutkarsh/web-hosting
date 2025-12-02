@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements & Certificates | Utkarsh Dimri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="achievement.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <img src="Gemini_Generated_Image_mqv6hdmqv6hdmqv6.png" alt="Utkarsh Dimri" class="nav-logo">
+                <span class="nav-title">Utkarsh Dimri</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><--Back to Home</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Achievements & Certificates</h1>
+            <p class="hero-subtitle">
+                A comprehensive showcase of my professional journey, certifications, awards, and memorable achievements in Artificial Intelligence, Machine Learning, and Data Science.
+            </p>
+
+            <!-- Photo Gallery Carousel -->
+            <div class="gallery-section">
+                <h2 class="gallery-title">Featured Achievement Gallery</h2>
+                <div class="gallery-carousel" id="galleryCarousel">
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Gallery slides will be populated by JavaScript -->
+                    </div>
+                    <button class="gallery-nav gallery-prev" id="galleryPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-nav gallery-next" id="galleryNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="gallery-indicators" id="galleryIndicators">
+                        <!-- Indicators will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <span class="stat-number" id="totalCertificates">15+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span class="stat-number" id="totalAwards">8</span>
+                        <span class="stat-label">Awards</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <span class="stat-number" id="totalCompetitions">12</span>
+                        <span class="stat-label">Competitions</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="stat-number" id="featuredCount">5</span>
+                        <span class="stat-label">Featured</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <h2 class="filter-title">Browse Achievements</h2>
+            <p class="filter-subtitle">Filter by category to explore specific types of achievements</p>
+            
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-star"></i>
+                    <span>All Achievements</span>
+                    <span class="filter-count" id="countAll">24</span>
+                </button>
+                <button class="filter-btn" data-category="certificate">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certifications</span>
+                    <span class="filter-count" id="countCertificates">15</span>
+                </button>
+                <button class="filter-btn" data-category="award">
+                    <i class="fas fa-trophy"></i>
+                    <span>Awards</span>
+                    <span class="filter-count" id="countAwards">8</span>
+                </button>
+                <button class="filter-btn" data-category="competition">
+                    <i class="fas fa-flag-checkered"></i>
+                    <span>Competitions</span>
+                    <span class="filter-count" id="countCompetitions">12</span>
+                </button>
+                <button class="filter-btn" data-category="publication">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Publications</span>
+                    <span class="filter-count" id="countPublications">3</span>
+                </button>
+            </div>
+
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search achievements, skills, or organizations...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading achievements...</p>
+            </div>
+
+            <!-- Achievements Grid -->
+            <div class="achievements-grid" id="achievementsGrid">
+                <!-- Achievements will be loaded dynamically -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn-primary" id="loadMoreBtn" style="display: none;">
+                    <i class="fas fa-plus"></i>
+                    Load More Achievements
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Modal -->
+    <div class="modal-overlay" id="achievementModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Achievement Details</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="modal-image" id="modalImage" src="" alt="">
+                <div class="modal-content">
+                    <div class="modal-meta">
+                        <div>
+                            <strong>Issued:</strong> <span id="modalDate"></span>
+                        </div>
+                        <div>
+                            <strong>Organization:</strong> <span id="modalIssuer"></span>
+                        </div>
+                    </div>
+                    <p id="modalDescription"></p>
+                    <div id="modalSkills"></div>
+                    <div class="modal-actions">
+                        <a href="#" class="btn btn-outline" id="verifyBtn" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Verify Certificate
+                        </a>
+                        <button class="btn btn-primary" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Download Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Utkarsh Dimri. Professional Achievements & Certifications Portfolio.</p>
+        </div>
+    </footer>
+    <script src="achievement.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
