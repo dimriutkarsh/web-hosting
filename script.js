@@ -21,7 +21,73 @@ function updateThemeIcon(theme) {
     const icon = themeToggle.querySelector('i');
     icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
+// Array of header image URLs (add your own images here)
+const headerImages = [
+    "266.jpg",  // Your current image
+    "26.jpg",
+    "gemini_generated_image_mqv6hdmqv6hdmqv6.png",
+    "updated.png"
+];
 
+// Function to preload images for smooth transitions
+function preloadImages(imageArray) {
+    imageArray.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Function to change header image with fade effect
+function rotateHeaderImage() {
+    const headerImg = document.querySelector('.profile-image');
+    const imageWrapper = document.querySelector('.image-wrapper');
+    
+    if (!headerImg) return;
+    
+    // Get current image index
+    const currentSrc = headerImg.getAttribute('src');
+    let currentIndex = headerImages.indexOf(currentSrc);
+    
+    // If current image not found in array or array has only one image, use random
+    if (currentIndex === -1 || headerImages.length <= 1) {
+        currentIndex = Math.floor(Math.random() * headerImages.length);
+    } else {
+        // Move to next image, loop back to start if at end
+        currentIndex = (currentIndex + 1) % headerImages.length;
+    }
+    
+    // Create fade-out effect
+    headerImg.style.opacity = '0';
+    
+    // After fade out, change image and fade in
+    setTimeout(() => {
+        headerImg.setAttribute('src', headerImages[currentIndex]);
+        headerImg.setAttribute('alt', `Utkarsh Dimri - Professional AI Engineer ${currentIndex + 1}`);
+        headerImg.style.opacity = '1';
+    }, 500);
+}
+
+// Function to initialize image rotation
+function initImageRotation() {
+    // Preload all images for smooth transitions
+    preloadImages(headerImages);
+    
+    // Start rotating images every 3-4 seconds (random interval)
+    function startRotation() {
+        // Random interval between 3000ms and 4000ms
+        const randomInterval = Math.floor(Math.random() * 1000) + 7000;
+        
+        // Change image and schedule next change
+        rotateHeaderImage();
+        setTimeout(startRotation, randomInterval);
+    }
+    
+    // Start the rotation after initial load
+    setTimeout(startRotation, 3000);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initImageRotation);
 // Mobile menu functionality
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');

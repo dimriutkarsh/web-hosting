@@ -118,7 +118,59 @@ a {
 a:hover {
     color: var(--secondary-color);
 }
+/* Image transition styles */
+.profile-image {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
 
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(var(--primary-rgb), 0.1) 0%,
+        rgba(var(--secondary-rgb), 0.1) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* For better visual feedback during transition */
+.image-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(var(--primary-color), 0.2) 0%,
+        transparent 50%,
+        rgba(var(--secondary-color), 0.2) 100%);
+    opacity: 0.3;
+    z-index: 2;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+/* Optional: Add a subtle animation to the decoration */
+@keyframes shimmer {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.3; }
+}
+
+.image-decoration {
+    animation: shimmer 3s ease-in-out infinite;
+}
 /* Background and Animations */
 .background-video {
     position: fixed;
